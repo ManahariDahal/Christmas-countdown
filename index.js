@@ -7,7 +7,7 @@ const secondsElement = document.getElementById('seconds');
 /******************************************************* 
 * Our target countdown
 *******************************************************/
-const christmasDay = '25 Dec 2020';
+let christmasDay = '25 Dec 2020';
 
 function countdown() {
     const christmasDayDate = new Date(christmasDay);
@@ -15,16 +15,17 @@ function countdown() {
 
     const totalSeconds = (christmasDayDate - currentDate) / 1000;
 
-    const days = Math.floor(totalSeconds / 3600 / 24);
-    const hours = Math.floor(totalSeconds / 3600 % 24);
-    const minutes = Math.floor(totalSeconds / 60) % 60;
-    const seconds = Math.floor(totalSeconds) % 60;
+    const days = Math.abs(Math.floor(totalSeconds / 3600 / 24));
+    const hours = Math.abs(Math.floor(totalSeconds / 3600 % 24));
+    const minutes = Math.abs(Math.floor(totalSeconds / 60) % 60);
+    const seconds = Math.abs(Math.floor(totalSeconds) % 60);
 
     daysElement.innerHTML = formatTime(days);
     hoursElement.innerHTML = formatTime(hours);
     miutesElement.innerHTML = formatTime(minutes);
     secondsElement.innerHTML = formatTime(seconds);
 }
+
 
 
 /******************************************************* 
@@ -34,10 +35,9 @@ function formatTime(time) {
     return time < 10 ? (`0${time}`) : time;
 }
 
-
 /******************************************************* 
 * Calling the function 
 *******************************************************/
 countdown();
-
 setInterval(countdown, 1000);
+
