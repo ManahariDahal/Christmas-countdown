@@ -7,7 +7,7 @@ const secondsElement = document.getElementById('seconds');
 /******************************************************* 
 * Our target countdown
 *******************************************************/
-let christmasDay = '25 Dec 2020';
+let christmasDay = '25 Dec 2021';
 
 function countdown() {
     const christmasDayDate = new Date(christmasDay);
